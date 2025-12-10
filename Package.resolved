@@ -1,0 +1,15 @@
+{
+  "originHash" : "10d58badb2f69faa971b14e1284e1f769ed6bcd20e5fad71c061161c7d47496e",
+  "pins" : [
+    {
+      "identity" : "swift-iso-9899",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swift-standards/swift-iso-9899",
+      "state" : {
+        "revision" : "f5b61c811ce2dd33b73064ae0d666a2caa16abf9",
+        "version" : "0.2.1"
+      }
+    }
+  ],
+  "version" : 3
+}
