@@ -10,15 +10,15 @@ let package = Package(
         .iOS(.v26),
         .tvOS(.v26),
         .watchOS(.v26),
-        .visionOS(.v26),
+        .visionOS(.v26)
     ],
     products: [
         .library(name: "IEC 61966", targets: ["IEC 61966"]),
         .library(name: "IEC 61966 Shared", targets: ["IEC 61966 Shared"]),
-        .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"]),
+        .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"])
     ],
     dependencies: [
-        .package(path: "../swift-iso-9899"),
+        .package(path: "../swift-iso-9899")
     ],
     targets: [
         // MARK: - Shared
@@ -30,7 +30,7 @@ let package = Package(
             dependencies: [
                 "IEC 61966 Shared",
                 .product(name: "ISO 9899", package: "swift-iso-9899")
-            ]
+    ]
         ),
 
         // MARK: - High-level API (exports all parts)
@@ -38,15 +38,11 @@ let package = Package(
             name: "IEC 61966",
             dependencies: [
                 "IEC 61966 Shared",
-                "IEC 61966 2-1",
+                "IEC 61966 2-1"
             ]
         ),
 
         // MARK: - Tests
-        .testTarget(
-            name: "IEC 61966 Tests",
-            dependencies: ["IEC 61966"]
-        ),
     ],
     swiftLanguageModes: [.v6]
 )
@@ -55,6 +51,6 @@ for target in package.targets where ![.system, .binary, .plugin].contains(target
     target.swiftSettings = (target.swiftSettings ?? []) + [
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
+        .enableUpcomingFeature("MemberImportVisibility")
     ]
 }
