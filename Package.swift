@@ -18,7 +18,7 @@ let package = Package(
         .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-standards/swift-iso-9899.git", from: "0.0.1"),
+        .package(path: "../swift-iso-9899"),
     ],
     targets: [
         // MARK: - Shared
