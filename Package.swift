@@ -18,7 +18,8 @@ let package = Package(
         .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"])
     ],
     dependencies: [
-        .package(url: "https://github.com/swift-iso/swift-iso-9899.git", branch: "main")
+        .package(url: "https://github.com/swift-iso/swift-iso-9899.git", branch: "main"),
+        .package(url: "https://github.com/swift-primitives/swift-ascii-primitives.git", branch: "main")
     ],
     targets: [
         // MARK: - Shared
@@ -29,7 +30,8 @@ let package = Package(
             name: "IEC 61966 2-1",
             dependencies: [
                 "IEC 61966 Shared",
-                .product(name: "ISO 9899", package: "swift-iso-9899")
+                .product(name: "ISO 9899", package: "swift-iso-9899"),
+                .product(name: "ASCII Primitives", package: "swift-ascii-primitives")
     ]
         ),
 

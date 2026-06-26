@@ -3,6 +3,8 @@
 
 public import IEC_61966_Shared
 
+internal import ASCII_Primitives
+
 // MARK: - sRGB Color
 
 extension IEC_61966.`2`.`1` {
@@ -344,16 +346,19 @@ extension IEC_61966.`2`.`1`.sRGB {
 
   /// Hex string representation (#RRGGBB)
   public var hex: String {
-    // Build hex string without Foundation String(format:)
-    let hexChars: [Character] = [
-      "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F",
-    ]
+    // Delegate each nibble (uppercase '0'-'9'/'A'-'F') to the L1 single-byte
+    // ASCII primitive; per-nibble lookup preserves fixed-width zero-padding.
+    func digit(_ nibble: Int) -> Character {
+      // `nibble & 0xF` structurally guarantees the 0-15 domain, so the
+      // primitive never returns nil here.
+      Character(UnicodeScalar(ASCII.Serialization.hexDigitUppercase(UInt8(nibble & 0xF))!))
+    }
     let r = r255
     let g = g255
     let b = b255
-    return "#" + String(hexChars[(r >> 4) & 0xF]) + String(hexChars[r & 0xF])
-      + String(hexChars[(g >> 4) & 0xF]) + String(hexChars[g & 0xF])
-      + String(hexChars[(b >> 4) & 0xF]) + String(hexChars[b & 0xF])
+    return "#" + String(digit((r >> 4) & 0xF)) + String(digit(r & 0xF))
+      + String(digit((g >> 4) & 0xF)) + String(digit(g & 0xF))
+      + String(digit((b >> 4) & 0xF)) + String(digit(b & 0xF))
   }
 }
 
