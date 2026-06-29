@@ -351,7 +351,7 @@ extension IEC_61966.`2`.`1`.sRGB {
     func digit(_ nibble: Int) -> Character {
       // `nibble & 0xF` structurally guarantees the 0-15 domain, so the
       // primitive never returns nil here.
-      Character(UnicodeScalar(ASCII.Serialization.hexDigitUppercase(UInt8(nibble & 0xF))!))
+      Character(UnicodeScalar(ASCII.Hexadecimal.code(UInt8(nibble & 0xF), case: .upper)!))
     }
     let r = r255
     let g = g255
