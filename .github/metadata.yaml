@@ -1,6 +1,6 @@
 # .github/metadata.yaml
 # Triaged by AI-assisted bulk pass (2026-04-29).
-description: "Swift implementation of IEC 61966: sRGB color space."
+description: "Swift implementation of IEC 61966-2-1: Multimedia systems and equipment — Colour measurement and management — Part 2-1: Default RGB colour space — sRGB."
 topics:
   - standards
   - iec
