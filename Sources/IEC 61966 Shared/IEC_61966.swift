@@ -29,6 +29,6 @@
 /// IEC 61966-2-1:1999 — Multimedia systems and equipment — Colour measurement
 /// and management — Part 2-1: Colour management — Default RGB colour space — sRGB
 public enum IEC_61966 {
-  /// Part 2: Colour management
-  public enum `2` {}
+    /// Part 2: Colour management
+    public enum `2` {}
 }
