@@ -1,0 +1,7 @@
+version: 1
+builder:
+  configs:
+  - documentation_targets:
+    - IEC 61966
+    - IEC 61966 Shared
+    - IEC 61966 2-1
