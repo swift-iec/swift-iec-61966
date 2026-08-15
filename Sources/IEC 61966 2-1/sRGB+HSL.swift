@@ -148,8 +148,10 @@ extension IEC_61966.`2`.`1`.sRGB {
         switch maxC {
         case r:
             h = ((g - b) / delta).truncatingRemainder(dividingBy: 6)
+
         case g:
             h = (b - r) / delta + 2
+
         default:  // b
             h = (r - g) / delta + 4
         }
