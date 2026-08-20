@@ -1,4 +1,4 @@
-// swift-tools-version: 6.3.3
+// swift-tools-version: 6.4
 
 import PackageDescription
 
@@ -6,20 +6,23 @@ import PackageDescription
 let package = Package(
     name: "swift-iec-61966",
     platforms: [
-        .macOS("27"),
-        .iOS("27"),
-        .tvOS("27"),
-        .watchOS("27"),
-        .visionOS("27")
+        .macOS(.v27),
+        .iOS(.v27),
+        .tvOS(.v27),
+        .watchOS(.v27),
+        .visionOS(.v27),
     ],
     products: [
         .library(name: "IEC 61966", targets: ["IEC 61966"]),
         .library(name: "IEC 61966 Shared", targets: ["IEC 61966 Shared"]),
-        .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"])
+        .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"]),
     ],
     dependencies: [
         .package(url: "https://github.com/swift-iso/swift-iso-9899.git", branch: "main"),
-        .package(url: "https://github.com/swift-primitives/swift-ascii-primitives.git", branch: "main")
+        .package(
+            url: "https://github.com/swift-primitives/swift-ascii-primitives.git",
+            branch: "main"
+        ),
     ],
     targets: [
         // MARK: - Shared
@@ -31,8 +34,8 @@ let package = Package(
             dependencies: [
                 "IEC 61966 Shared",
                 .product(name: "ISO 9899", package: "swift-iso-9899"),
-                .product(name: "ASCII Primitives", package: "swift-ascii-primitives")
-    ]
+                .product(name: "ASCII Primitives", package: "swift-ascii-primitives"),
+            ]
         ),
 
         // MARK: - High-level API (exports all parts)
@@ -40,7 +43,7 @@ let package = Package(
             name: "IEC 61966",
             dependencies: [
                 "IEC 61966 Shared",
-                "IEC 61966 2-1"
+                "IEC 61966 2-1",
             ]
         ),
 
@@ -48,7 +51,7 @@ let package = Package(
         .testTarget(
             name: "IEC 61966 Tests",
             dependencies: [
-                "IEC 61966",
+                "IEC 61966"
             ]
         ),
     ],
