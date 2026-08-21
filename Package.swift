@@ -2,7 +2,6 @@
 
 import PackageDescription
 
-// IEC 61966: Multimedia systems and equipment — Colour measurement and management
 let package = Package(
     name: "swift-iec-61966",
     platforms: [
@@ -25,10 +24,9 @@ let package = Package(
         ),
     ],
     targets: [
-        // MARK: - Shared
+
         .target(name: "IEC 61966 Shared"),
 
-        // MARK: - Part 2-1: sRGB
         .target(
             name: "IEC 61966 2-1",
             dependencies: [
@@ -38,7 +36,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - High-level API (exports all parts)
         .target(
             name: "IEC 61966",
             dependencies: [
@@ -47,7 +44,6 @@ let package = Package(
             ]
         ),
 
-        // MARK: - Tests
         .testTarget(
             name: "IEC 61966 Tests",
             dependencies: [

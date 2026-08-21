@@ -1,5 +1,3 @@
-// sRGBTests.swift
-
 import IEC_61966
 import Testing
 

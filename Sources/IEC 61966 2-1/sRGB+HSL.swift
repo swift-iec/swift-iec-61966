@@ -1,36 +1,7 @@
-// sRGB+HSL.swift
-// HSL color model conversions for sRGB
-
 public import IEC_61966_Shared
 
-// MARK: - HSL to sRGB
-
 extension IEC_61966.`2`.`1`.sRGB {
-    /// Create sRGB from HSL components
-    ///
-    /// This is the canonical HSL → sRGB conversion using validated types.
-    ///
-    /// - Parameters:
-    ///   - hue: Hue angle (auto-normalizes to 0-360°)
-    ///   - saturation: Saturation component (0-1, validated)
-    ///   - lightness: Lightness component (0-1, validated)
-    ///
-    /// ## Example
-    ///
-    /// ```swift
-    /// let red = sRGB(
-    ///     hue: Hue(0),
-    ///     saturation: try Saturation(1),
-    ///     lightness: try Lightness(0.5)
-    /// )
-    /// ```
-    ///
-    /// ## Color Model
-    ///
-    /// HSL represents colors as:
-    /// - **Hue**: The color angle on the color wheel (0° = red, 120° = green, 240° = blue)
-    /// - **Saturation**: The intensity of the color (0 = gray, 1 = full color)
-    /// - **Lightness**: The brightness (0 = black, 0.5 = pure color, 1 = white)
+
     public init(
         hue: IEC_61966.`2`.`1`.Hue,
         saturation: IEC_61966.`2`.`1`.Saturation,
@@ -41,7 +12,7 @@ extension IEC_61966.`2`.`1`.sRGB {
         let l = lightness.value
 
         if s == 0 {
-            // Achromatic (gray)
+
             self.init(gray: l)
             return
         }
@@ -57,15 +28,6 @@ extension IEC_61966.`2`.`1`.sRGB {
         self.init(r: r, g: g, b: b)
     }
 
-    /// Convenience: Create sRGB from HSL with Double values
-    ///
-    /// - Parameters:
-    ///   - h: Hue in degrees (wraps automatically via normalizing)
-    ///   - s: Saturation (clamped to 0-1)
-    ///   - l: Lightness (clamped to 0-1)
-    ///
-    /// - Note: This is a convenience that wraps the typed initializer.
-    ///   Use `init(hue:saturation:lightness:)` for type-safe construction.
     public init(h: Double, s: Double, l: Double) {
         self.init(
             hue: IEC_61966.`2`.`1`.Hue(normalizing: h),
@@ -92,15 +54,8 @@ extension IEC_61966.`2`.`1`.sRGB {
     }
 }
 
-// MARK: - sRGB to HSL
-
 extension IEC_61966.`2`.`1`.sRGB {
-    /// HSL representation of this color
-    ///
-    /// Returns validated typed components:
-    /// - `hue`: Hue angle (normalized)
-    /// - `saturation`: Saturation component (0-1)
-    /// - `lightness`: Lightness component (0-1)
+
     public var hsl:
         (
             hue: IEC_61966.`2`.`1`.Hue,
@@ -116,34 +71,22 @@ extension IEC_61966.`2`.`1`.sRGB {
         )
     }
 
-    /// Convenience: HSL representation as raw Double values
-    ///
-    /// Returns a tuple of:
-    /// - `h`: Hue in degrees (0-360)
-    /// - `s`: Saturation (0-1)
-    /// - `l`: Lightness (0-1)
-    ///
-    /// - Note: Prefer the typed `hsl` property for type-safe access.
     public var hslValues: (h: Double, s: Double, l: Double) {
         let maxC = max(r, g, b)
         let minC = min(r, g, b)
         let delta = maxC - minC
 
-        // Lightness
         let l = (maxC + minC) / 2.0
 
-        // Achromatic
         if delta == 0 {
             return (h: 0, s: 0, l: l)
         }
 
-        // Saturation
         let s =
             l > 0.5
             ? delta / (2.0 - maxC - minC)
             : delta / (maxC + minC)
 
-        // Hue
         var h: Double
         switch maxC {
         case r:
@@ -152,7 +95,7 @@ extension IEC_61966.`2`.`1`.sRGB {
         case g:
             h = (b - r) / delta + 2
 
-        default:  // b
+        default:
             h = (r - g) / delta + 4
         }
 
