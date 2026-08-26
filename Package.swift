@@ -19,7 +19,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/swift-iso/swift-iso-9899.git", branch: "main"),
         .package(
-            url: "https://github.com/swift-primitives/swift-ascii-primitives.git",
+            url: "https://github.com/swift-molecules/swift-ascii.git",
             branch: "main"
         ),
     ],
@@ -32,7 +32,7 @@ let package = Package(
             dependencies: [
                 "IEC 61966 Shared",
                 .product(name: "ISO 9899", package: "swift-iso-9899"),
-                .product(name: "ASCII Primitives", package: "swift-ascii-primitives"),
+                .product(name: "ASCII", package: "swift-ascii"),
             ]
         ),
 
