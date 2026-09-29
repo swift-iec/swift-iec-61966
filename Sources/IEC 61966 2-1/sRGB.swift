@@ -217,7 +217,7 @@ extension IEC_61966.`2`.`1`.sRGB {
 
         func digit(_ nibble: Int) -> Character {
 
-            Character(UnicodeScalar(ASCII.Hexadecimal.code(UInt8(nibble & 0xF), case: .upper)!))
+            Character(UnicodeScalar(ASCII.Hexadecimal.code(UInt8(nibble & 0xF), case: .upper)!.underlying))
         }
         let r = r255
         let g = g255
