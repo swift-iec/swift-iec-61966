@@ -5,11 +5,17 @@ extension IEC_61966.`2`.`1` {
 
     public struct sRGB: Sendable, Hashable {
 
-        public var r: Double
+        public var r: Double {
+            didSet { r = Self.normalized(r) }
+        }
 
-        public var g: Double
+        public var g: Double {
+            didSet { g = Self.normalized(g) }
+        }
 
-        public var b: Double
+        public var b: Double {
+            didSet { b = Self.normalized(b) }
+        }
 
         public init(red: Red, green: Green, blue: Blue) {
             self.r = red.value
@@ -18,9 +24,13 @@ extension IEC_61966.`2`.`1` {
         }
 
         public init(r: Double, g: Double, b: Double) {
-            self.r = r.isNaN ? 0 : min(max(r, 0), 1)
-            self.g = g.isNaN ? 0 : min(max(g, 0), 1)
-            self.b = b.isNaN ? 0 : min(max(b, 0), 1)
+            self.r = Self.normalized(r)
+            self.g = Self.normalized(g)
+            self.b = Self.normalized(b)
+        }
+
+        static func normalized(_ component: Double) -> Double {
+            component.isNaN ? 0 : min(max(component, 0), 1)
         }
     }
 }
@@ -130,9 +140,7 @@ extension IEC_61966.`2`.`1`.Blue {
 extension IEC_61966.`2`.`1`.sRGB {
 
     public init(gray: Double) {
-        self.r = gray
-        self.g = gray
-        self.b = gray
+        self.init(r: gray, g: gray, b: gray)
     }
 }
 

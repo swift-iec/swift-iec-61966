@@ -23,9 +23,7 @@ extension IEC_61966.`2`.`1`.sRGB {
         )
 
         let scale = 1 - w - b
-        self.r = base.r * scale + w
-        self.g = base.g * scale + w
-        self.b = base.b * scale + w
+        self.init(r: base.r * scale + w, g: base.g * scale + w, b: base.b * scale + w)
     }
 
     public init(hue: Double, whiteness: Double, blackness: Double) {
