@@ -166,9 +166,7 @@ extension IEC_61966.`2`.`1`.sRGB {
 extension IEC_61966.`2`.`1`.sRGB {
 
     public init(r255 r: Int, g255 g: Int, b255 b: Int) {
-        self.r = Double(r) / 255.0
-        self.g = Double(g) / 255.0
-        self.b = Double(b) / 255.0
+        self.init(r: Double(r) / 255.0, g: Double(g) / 255.0, b: Double(b) / 255.0)
     }
 
     public var r255: Int {
