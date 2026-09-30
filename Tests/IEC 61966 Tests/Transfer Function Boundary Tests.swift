@@ -44,4 +44,11 @@ struct `sRGB transfer function boundaries` {
             #expect((0...1).contains(clamped), "clamping \(value) gave \(clamped)")
         }
     }
+
+    @Test
+    func `a NaN channel reads as zero instead of trapping`() {
+        let color = IEC_61966.sRGB(r: .nan, g: 0.5, b: 1)
+        #expect(color.r255 == 0)
+        #expect(color.b255 == 255)
+    }
 }

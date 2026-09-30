@@ -31,7 +31,7 @@ extension IEC_61966.`2`.`1`.LinearLight {
 extension IEC_61966.`2`.`1`.LinearLight {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 

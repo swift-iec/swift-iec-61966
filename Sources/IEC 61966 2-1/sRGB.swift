@@ -18,9 +18,9 @@ extension IEC_61966.`2`.`1` {
         }
 
         public init(r: Double, g: Double, b: Double) {
-            self.r = min(max(r, 0), 1)
-            self.g = min(max(g, 0), 1)
-            self.b = min(max(b, 0), 1)
+            self.r = r.isNaN ? 0 : min(max(r, 0), 1)
+            self.g = g.isNaN ? 0 : min(max(g, 0), 1)
+            self.b = b.isNaN ? 0 : min(max(b, 0), 1)
         }
     }
 }
@@ -55,7 +55,7 @@ extension IEC_61966.`2`.`1`.Red {
 extension IEC_61966.`2`.`1`.Red {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
@@ -89,7 +89,7 @@ extension IEC_61966.`2`.`1`.Green {
 extension IEC_61966.`2`.`1`.Green {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
@@ -123,7 +123,7 @@ extension IEC_61966.`2`.`1`.Blue {
 extension IEC_61966.`2`.`1`.Blue {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
@@ -230,6 +230,6 @@ extension IEC_61966.`2`.`1`.sRGB {
 
 extension Double {
     func clamped(to range: ClosedRange<Double>) -> Double {
-        min(max(self, range.lowerBound), range.upperBound)
+        isNaN ? range.lowerBound : min(max(self, range.lowerBound), range.upperBound)
     }
 }

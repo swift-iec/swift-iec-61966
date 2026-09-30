@@ -93,7 +93,7 @@ extension IEC_61966.`2`.`1`.Saturation: CustomStringConvertible {
 extension IEC_61966.`2`.`1`.Saturation {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
@@ -137,7 +137,7 @@ extension IEC_61966.`2`.`1`.Lightness: CustomStringConvertible {
 extension IEC_61966.`2`.`1`.Lightness {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
@@ -181,7 +181,7 @@ extension IEC_61966.`2`.`1`.Whiteness: CustomStringConvertible {
 extension IEC_61966.`2`.`1`.Whiteness {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
@@ -225,7 +225,7 @@ extension IEC_61966.`2`.`1`.Blackness: CustomStringConvertible {
 extension IEC_61966.`2`.`1`.Blackness {
 
     public init(clamping value: Double) {
-        self.value = min(max(value, 0), 1)
+        self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
