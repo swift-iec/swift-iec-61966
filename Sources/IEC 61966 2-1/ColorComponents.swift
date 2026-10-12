@@ -29,13 +29,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Hue {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: Range<Double> = 0..<360
+    }
+}
 
-        public var description: String {
-            "Hue value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Hue.Error {
+    public static let validRange: Range<Double> = 0..<360
+
+    public var description: String {
+        "Hue value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -74,13 +77,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Saturation {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Saturation value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Saturation.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Saturation value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -118,13 +124,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Lightness {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Lightness value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Lightness.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Lightness value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -162,13 +171,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Whiteness {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Whiteness value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Whiteness.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Whiteness value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -206,13 +218,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Blackness {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Blackness value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Blackness.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Blackness value \(value) is out of valid range \(Self.validRange)"
     }
 }
 

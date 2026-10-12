@@ -30,7 +30,7 @@ let package = Package(
         .target(
             name: "IEC 61966 2-1",
             dependencies: [
-                "IEC 61966 Shared",
+                .target(name: "IEC 61966 Shared"),
                 .product(name: "ISO 9899", package: "swift-iso-9899"),
                 .product(name: "ASCII", package: "swift-ascii"),
             ]
@@ -39,15 +39,15 @@ let package = Package(
         .target(
             name: "IEC 61966",
             dependencies: [
-                "IEC 61966 Shared",
-                "IEC 61966 2-1",
+                .target(name: "IEC 61966 Shared"),
+                .target(name: "IEC 61966 2-1"),
             ]
         ),
 
         .testTarget(
             name: "IEC 61966 Tests",
             dependencies: [
-                "IEC 61966"
+                .target(name: "IEC 61966")
             ]
         ),
     ],
@@ -55,16 +55,14 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    let ecosystem: [SwiftSetting] = [
+    target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
         .enableUpcomingFeature("MemberImportVisibility"),
         .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+        .enableUpcomingFeature("InferIsolatedConformances"),
         .enableExperimentalFeature("Lifetimes"),
+        .treatAllWarnings(as: .error),
     ]
-
-    let package: [SwiftSetting] = []
-
-    target.swiftSettings = (target.swiftSettings ?? []) + ecosystem + package
 }

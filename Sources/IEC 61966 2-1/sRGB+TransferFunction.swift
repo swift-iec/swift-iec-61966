@@ -18,13 +18,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.LinearLight {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "LinearLight value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.LinearLight.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "LinearLight value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -37,18 +40,19 @@ extension IEC_61966.`2`.`1`.LinearLight {
 
 extension IEC_61966.`2`.`1`.sRGB {
 
-    public enum TransferFunction {
+    public enum TransferFunction {}
+}
 
-        public static let threshold: Double = 0.04045
+extension IEC_61966.`2`.`1`.sRGB.TransferFunction {
+    public static let threshold: Double = 0.04045
 
-        public static let linearThreshold: Double = 0.0031308
+    public static let linearThreshold: Double = 0.0031308
 
-        public static let linearSlope: Double = 12.92
+    public static let linearSlope: Double = 12.92
 
-        public static let gamma: Double = 2.4
+    public static let gamma: Double = 2.4
 
-        public static let offset: Double = 0.055
-    }
+    public static let offset: Double = 0.055
 }
 
 extension IEC_61966.`2`.`1`.LinearLight {

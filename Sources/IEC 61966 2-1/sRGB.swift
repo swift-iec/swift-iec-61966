@@ -28,10 +28,12 @@ extension IEC_61966.`2`.`1` {
             self.g = Self.normalized(g)
             self.b = Self.normalized(b)
         }
+    }
+}
 
-        static func normalized(_ component: Double) -> Double {
-            component.isNaN ? 0 : min(max(component, 0), 1)
-        }
+extension IEC_61966.`2`.`1`.sRGB {
+    static func normalized(_ component: Double) -> Double {
+        component.isNaN ? 0 : min(max(component, 0), 1)
     }
 }
 
@@ -52,13 +54,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Red {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Red channel value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Red.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Red channel value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -86,13 +91,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Green {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Green channel value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Green.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Green channel value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
@@ -120,13 +128,16 @@ extension IEC_61966.`2`.`1` {
 
 extension IEC_61966.`2`.`1`.Blue {
 
-    public struct Error: Swift.Error, Sendable, CustomStringConvertible {
+    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
-        public static let validRange: ClosedRange<Double> = 0...1
+    }
+}
 
-        public var description: String {
-            "Blue channel value \(value) is out of valid range \(Self.validRange)"
-        }
+extension IEC_61966.`2`.`1`.Blue.Error {
+    public static let validRange: ClosedRange<Double> = 0...1
+
+    public var description: String {
+        "Blue channel value \(value) is out of valid range \(Self.validRange)"
     }
 }
 
