@@ -33,15 +33,15 @@ extension IEC_61966.`2`.`1`.HSL {
 
 extension IEC_61966.`2`.`1`.HSL {
 
-    public init(_ srgb: IEC_61966.`2`.`1`.sRGB) {
+    public init(_ srgb: IEC_61966.`2`.`1`.SRGB) {
         let hsl = srgb.hsl
         self.hue = hsl.hue
         self.saturation = hsl.saturation
         self.lightness = hsl.lightness
     }
 
-    public var srgb: IEC_61966.`2`.`1`.sRGB {
-        IEC_61966.`2`.`1`.sRGB(
+    public var srgb: IEC_61966.`2`.`1`.SRGB {
+        IEC_61966.`2`.`1`.SRGB(
             hue: hue,
             saturation: saturation,
             lightness: lightness

@@ -33,15 +33,15 @@ extension IEC_61966.`2`.`1`.HWB {
 
 extension IEC_61966.`2`.`1`.HWB {
 
-    public init(_ srgb: IEC_61966.`2`.`1`.sRGB) {
+    public init(_ srgb: IEC_61966.`2`.`1`.SRGB) {
         let hwb = srgb.hwb
         self.hue = hwb.hue
         self.whiteness = hwb.whiteness
         self.blackness = hwb.blackness
     }
 
-    public var srgb: IEC_61966.`2`.`1`.sRGB {
-        IEC_61966.`2`.`1`.sRGB(
+    public var srgb: IEC_61966.`2`.`1`.SRGB {
+        IEC_61966.`2`.`1`.SRGB(
             hue: hue,
             whiteness: whiteness,
             blackness: blackness

@@ -1,6 +1,6 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public init(
         hue: IEC_61966.`2`.`1`.Hue,
@@ -54,7 +54,7 @@ extension IEC_61966.`2`.`1`.sRGB {
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public var hsl:
         (

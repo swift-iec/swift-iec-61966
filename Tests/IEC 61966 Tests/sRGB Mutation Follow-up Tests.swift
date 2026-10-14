@@ -3,7 +3,7 @@ import Testing
 
 @Suite
 struct `sRGB mutation follow-up` {
-    typealias sRGB = IEC_61966.`2`.`1`.sRGB
+    typealias sRGB = IEC_61966.`2`.`1`.SRGB
 
     @Test
     func `out-of-range 8-bit components are normalized`() {

@@ -38,12 +38,12 @@ extension IEC_61966.`2`.`1`.LinearLight {
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public enum TransferFunction {}
 }
 
-extension IEC_61966.`2`.`1`.sRGB.TransferFunction {
+extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
     public static let threshold: Double = 0.04045
 
     public static let linearThreshold: Double = 0.0031308
@@ -58,7 +58,7 @@ extension IEC_61966.`2`.`1`.sRGB.TransferFunction {
 extension IEC_61966.`2`.`1`.LinearLight {
 
     public var encoded: Double {
-        typealias TF = IEC_61966.`2`.`1`.sRGB.TransferFunction
+        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
         if value <= TF.linearThreshold {
             return TF.linearSlope * value
         } else {
@@ -70,7 +70,7 @@ extension IEC_61966.`2`.`1`.LinearLight {
 extension IEC_61966.`2`.`1`.Red {
 
     public var linear: IEC_61966.`2`.`1`.LinearLight {
-        typealias TF = IEC_61966.`2`.`1`.sRGB.TransferFunction
+        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
         let linearValue: Double
         if value <= TF.threshold {
             linearValue = value / TF.linearSlope
@@ -84,7 +84,7 @@ extension IEC_61966.`2`.`1`.Red {
 extension IEC_61966.`2`.`1`.Green {
 
     public var linear: IEC_61966.`2`.`1`.LinearLight {
-        typealias TF = IEC_61966.`2`.`1`.sRGB.TransferFunction
+        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
         let linearValue: Double
         if value <= TF.threshold {
             linearValue = value / TF.linearSlope
@@ -98,7 +98,7 @@ extension IEC_61966.`2`.`1`.Green {
 extension IEC_61966.`2`.`1`.Blue {
 
     public var linear: IEC_61966.`2`.`1`.LinearLight {
-        typealias TF = IEC_61966.`2`.`1`.sRGB.TransferFunction
+        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
         let linearValue: Double
         if value <= TF.threshold {
             linearValue = value / TF.linearSlope
@@ -135,8 +135,8 @@ extension IEC_61966.`2`.`1`.LinearSRGB {
         self.b = IEC_61966.`2`.`1`.LinearLight(clamping: b)
     }
 
-    public var encoded: IEC_61966.`2`.`1`.sRGB {
-        IEC_61966.`2`.`1`.sRGB(
+    public var encoded: IEC_61966.`2`.`1`.SRGB {
+        IEC_61966.`2`.`1`.SRGB(
             r: r.encoded,
             g: g.encoded,
             b: b.encoded
@@ -144,7 +144,7 @@ extension IEC_61966.`2`.`1`.LinearSRGB {
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public var linear: IEC_61966.`2`.`1`.LinearSRGB {
         IEC_61966.`2`.`1`.LinearSRGB(

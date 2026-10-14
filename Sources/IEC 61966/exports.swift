@@ -3,7 +3,7 @@
 
 extension IEC_61966 {
 
-    public typealias sRGB = IEC_61966.`2`.`1`.sRGB
+    public typealias SRGB = IEC_61966.`2`.`1`.SRGB
 }
 
 extension IEC_61966 {

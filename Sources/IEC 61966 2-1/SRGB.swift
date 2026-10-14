@@ -3,7 +3,7 @@ public import IEC_61966_Shared
 
 extension IEC_61966.`2`.`1` {
 
-    public struct sRGB: Sendable, Hashable {
+    public struct SRGB: Sendable, Hashable {
 
         public var r: Double {
             didSet { r = Self.normalized(r) }
@@ -31,7 +31,7 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
     static func normalized(_ component: Double) -> Double {
         component.isNaN ? 0 : min(max(component, 0), 1)
     }
@@ -148,14 +148,14 @@ extension IEC_61966.`2`.`1`.Blue {
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public init(gray: Double) {
         self.init(r: gray, g: gray, b: gray)
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public static let black = Self(r: 0, g: 0, b: 0)
 
@@ -174,7 +174,7 @@ extension IEC_61966.`2`.`1`.sRGB {
     public static let yellow = Self(r: 1, g: 1, b: 0)
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public init(r255 r: Int, g255 g: Int, b255 b: Int) {
         self.init(r: Double(r) / 255.0, g: Double(g) / 255.0, b: Double(b) / 255.0)
@@ -193,7 +193,7 @@ extension IEC_61966.`2`.`1`.sRGB {
     }
 }
 
-extension IEC_61966.`2`.`1`.sRGB {
+extension IEC_61966.`2`.`1`.SRGB {
 
     public init?(hex: String) {
         var hexString = hex

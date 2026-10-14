@@ -4,7 +4,7 @@ import Testing
 @Suite
 struct `sRGB transfer function boundaries` {
     private typealias Linear = IEC_61966.`2`.`1`.LinearLight
-    private typealias TF = IEC_61966.`2`.`1`.sRGB.TransferFunction
+    private typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
 
     @Test
     func `the endpoints encode to themselves`() throws {
@@ -47,7 +47,7 @@ struct `sRGB transfer function boundaries` {
 
     @Test
     func `a NaN channel reads as zero instead of trapping`() {
-        let color = IEC_61966.sRGB(r: .nan, g: 0.5, b: 1)
+        let color = IEC_61966.SRGB(r: .nan, g: 0.5, b: 1)
         #expect(color.r255 == 0)
         #expect(color.b255 == 255)
     }
