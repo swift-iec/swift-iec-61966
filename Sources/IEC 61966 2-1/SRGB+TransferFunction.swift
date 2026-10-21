@@ -59,11 +59,10 @@ extension IEC_61966.`2`.`1`.LinearLight {
 
     public var encoded: Double {
         typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
-        if value <= TF.linearThreshold {
-            return TF.linearSlope * value
-        } else {
+        guard value <= TF.linearThreshold else {
             return (1 + TF.offset) * ISO_9899.Math.pow(value, 1.0 / TF.gamma) - TF.offset
         }
+        return TF.linearSlope * value
     }
 }
 

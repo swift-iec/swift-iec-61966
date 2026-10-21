@@ -1,6 +1,5 @@
-import Testing
-
 import IEC_61966
+import Testing
 
 @Suite
 struct `sRGB mutation invariant` {

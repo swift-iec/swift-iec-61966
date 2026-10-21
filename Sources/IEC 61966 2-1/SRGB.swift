@@ -234,7 +234,10 @@ extension IEC_61966.`2`.`1`.SRGB {
 
         func digit(_ nibble: Int) -> Character {
 
-            Character(UnicodeScalar(ASCII.Hexadecimal.code(UInt8(nibble & 0xF), case: .upper)!.underlying))
+            guard let code = ASCII.Hexadecimal.code(UInt8(nibble & 0xF), case: .upper) else {
+                preconditionFailure("a masked nibble is always a valid hexadecimal digit")
+            }
+            return Character(UnicodeScalar(code.underlying))
         }
         let r = r255
         let g = g255
