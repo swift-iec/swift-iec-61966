@@ -1,8 +1,8 @@
 import IEC_61966
 import Testing
 
-@Suite("sRGB Tests")
-struct sRGBTests {
+@Suite
+struct `sRGB Tests` {
 
     @Test
     func `Create from RGB components`() {
