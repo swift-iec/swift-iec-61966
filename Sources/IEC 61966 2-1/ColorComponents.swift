@@ -28,10 +28,6 @@ extension IEC_61966.`2`.`1` {
 }
 
 extension IEC_61966.`2`.`1`.Hue {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Hue.Error {
@@ -57,29 +53,9 @@ extension IEC_61966.`2`.`1`.Hue {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Saturation: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-
-        public init(percent: Double) throws(Error) {
-            try self.init(percent / 100.0)
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Saturation {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Saturation.Error {
@@ -104,29 +80,9 @@ extension IEC_61966.`2`.`1`.Saturation {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Lightness: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-
-        public init(percent: Double) throws(Error) {
-            try self.init(percent / 100.0)
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Lightness {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Lightness.Error {
@@ -151,29 +107,9 @@ extension IEC_61966.`2`.`1`.Lightness {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Whiteness: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-
-        public init(percent: Double) throws(Error) {
-            try self.init(percent / 100.0)
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Whiteness {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Whiteness.Error {
@@ -198,29 +134,9 @@ extension IEC_61966.`2`.`1`.Whiteness {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Blackness: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-
-        public init(percent: Double) throws(Error) {
-            try self.init(percent / 100.0)
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Blackness {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Blackness.Error {
