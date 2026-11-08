@@ -38,25 +38,9 @@ extension IEC_61966.`2`.`1`.SRGB {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Red: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Red {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Red.Error {
@@ -75,25 +59,9 @@ extension IEC_61966.`2`.`1`.Red {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Green: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Green {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Green.Error {
@@ -112,25 +80,9 @@ extension IEC_61966.`2`.`1`.Green {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct Blue: Sendable, Hashable {
-
-        public let value: Double
-
-        public init(_ value: Double) throws(Error) {
-            guard value >= 0 && value <= 1 else {
-                throw Error(value: value)
-            }
-            self.value = value
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.Blue {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.Blue.Error {

@@ -17,10 +17,6 @@ extension IEC_61966.`2`.`1` {
 }
 
 extension IEC_61966.`2`.`1`.LinearLight {
-
-    public struct Error: Swift::Error, Sendable, CustomStringConvertible {
-        public let value: Double
-    }
 }
 
 extension IEC_61966.`2`.`1`.LinearLight.Error {
@@ -39,8 +35,6 @@ extension IEC_61966.`2`.`1`.LinearLight {
 }
 
 extension IEC_61966.`2`.`1`.SRGB {
-
-    public enum TransferFunction {}
 }
 
 extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
@@ -109,21 +103,6 @@ extension IEC_61966.`2`.`1`.Blue {
 }
 
 extension IEC_61966.`2`.`1` {
-
-    public struct LinearSRGB: Sendable, Hashable {
-
-        public let r: LinearLight
-
-        public let g: LinearLight
-
-        public let b: LinearLight
-
-        public init(r: LinearLight, g: LinearLight, b: LinearLight) {
-            self.r = r
-            self.g = g
-            self.b = b
-        }
-    }
 }
 
 extension IEC_61966.`2`.`1`.LinearSRGB {
