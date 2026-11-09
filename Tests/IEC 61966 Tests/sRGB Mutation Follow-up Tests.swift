@@ -81,3 +81,21 @@ extension `sRGB Mutation Follow-up Tests` {
         }
     }
 }
+
+extension `sRGB Mutation Follow-up Tests` {
+    @Suite
+    struct `hex parsing` {
+        typealias sRGB = IEC_61966.`2`.`1`.SRGB
+
+        @Test(arguments: ["+FF", "#+FF", "-FF", "+FFFFF", "#-FFFFF", "F F"])
+        func `non-hex characters are rejected`(_ hex: String) {
+            #expect(sRGB(hex: hex) == nil)
+        }
+
+        @Test
+        func `valid hex still parses`() {
+            #expect(sRGB(hex: "#FFF") == sRGB(r: 1, g: 1, b: 1))
+            #expect(sRGB(hex: " 000000 ") == sRGB(r: 0, g: 0, b: 0))
+        }
+    }
+}
