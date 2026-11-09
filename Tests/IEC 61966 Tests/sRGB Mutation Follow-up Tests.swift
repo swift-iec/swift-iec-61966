@@ -63,3 +63,21 @@ extension `sRGB Mutation Follow-up Tests` {
         }
     }
 }
+
+extension `sRGB Mutation Follow-up Tests` {
+    @Suite
+    struct `hue normalization` {
+        typealias Hue = IEC_61966.`2`.`1`.Hue
+
+        @Test(arguments: [Double.nan, .infinity, -.infinity])
+        func `non-finite degrees normalize to zero`(_ degrees: Double) {
+            #expect(Hue(normalizing: degrees).degrees == 0)
+        }
+
+        @Test
+        func `finite degrees wrap into the valid range`() {
+            #expect(Hue(normalizing: 370).degrees == 10)
+            #expect(Hue(normalizing: -30).degrees == 330)
+        }
+    }
+}

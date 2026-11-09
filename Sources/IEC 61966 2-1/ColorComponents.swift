@@ -51,6 +51,10 @@ extension IEC_61966.`2`.`1`.Hue: CustomStringConvertible {
 extension IEC_61966.`2`.`1`.Hue {
 
     public init(normalizing degrees: Double) {
+        guard degrees.isFinite else {
+            self.degrees = 0
+            return
+        }
         self.degrees = ((degrees.truncatingRemainder(dividingBy: 360.0)) + 360.0)
             .truncatingRemainder(dividingBy: 360.0)
     }
