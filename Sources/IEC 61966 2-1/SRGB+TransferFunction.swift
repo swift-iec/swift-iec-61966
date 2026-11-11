@@ -55,56 +55,57 @@ extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
     public static let offset: Double = 0.055
 }
 
+extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
+    /// The linear light of an encoded component: the component over 12.92 up to the threshold, and a
+    /// power of 2.4 above it. Nothing is clamped, so a component outside 0…1 follows the same two pieces.
+    public static func linear(_ encoded: Double) -> Double {
+        guard encoded > threshold else { return encoded / linearSlope }
+        return ISO_9899.Math.pow((encoded + offset) / (1 + offset), gamma)
+    }
+
+    /// The encoded component of a linear light: 12.92 times it up to the linear threshold, and a root
+    /// of 2.4 above it. Nothing is clamped.
+    public static func encoded(_ linear: Double) -> Double {
+        guard linear > linearThreshold else { return linearSlope * linear }
+        return (1 + offset) * ISO_9899.Math.pow(linear, 1.0 / gamma) - offset
+    }
+
+    /// `linear(_:)` in single precision, for buffers of `Float` components.
+    public static func linear(_ encoded: Float) -> Float {
+        guard encoded > Float(threshold) else { return encoded / Float(linearSlope) }
+        return ISO_9899.Math.pow((encoded + Float(offset)) / (1 + Float(offset)), Float(gamma))
+    }
+
+    /// `encoded(_:)` in single precision, for buffers of `Float` components.
+    public static func encoded(_ linear: Float) -> Float {
+        guard linear > Float(linearThreshold) else { return Float(linearSlope) * linear }
+        return (1 + Float(offset)) * ISO_9899.Math.pow(linear, 1 / Float(gamma)) - Float(offset)
+    }
+}
+
 extension IEC_61966.`2`.`1`.LinearLight {
 
-    public var encoded: Double {
-        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
-        guard value <= TF.linearThreshold else {
-            return (1 + TF.offset) * ISO_9899.Math.pow(value, 1.0 / TF.gamma) - TF.offset
-        }
-        return TF.linearSlope * value
-    }
+    public var encoded: Double { IEC_61966.`2`.`1`.SRGB.TransferFunction.encoded(value) }
 }
 
 extension IEC_61966.`2`.`1`.Red {
 
     public var linear: IEC_61966.`2`.`1`.LinearLight {
-        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
-        let linearValue: Double
-        if value <= TF.threshold {
-            linearValue = value / TF.linearSlope
-        } else {
-            linearValue = ISO_9899.Math.pow((value + TF.offset) / (1 + TF.offset), TF.gamma)
-        }
-        return IEC_61966.`2`.`1`.LinearLight(clamping: linearValue)
+        IEC_61966.`2`.`1`.LinearLight(clamping: IEC_61966.`2`.`1`.SRGB.TransferFunction.linear(value))
     }
 }
 
 extension IEC_61966.`2`.`1`.Green {
 
     public var linear: IEC_61966.`2`.`1`.LinearLight {
-        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
-        let linearValue: Double
-        if value <= TF.threshold {
-            linearValue = value / TF.linearSlope
-        } else {
-            linearValue = ISO_9899.Math.pow((value + TF.offset) / (1 + TF.offset), TF.gamma)
-        }
-        return IEC_61966.`2`.`1`.LinearLight(clamping: linearValue)
+        IEC_61966.`2`.`1`.LinearLight(clamping: IEC_61966.`2`.`1`.SRGB.TransferFunction.linear(value))
     }
 }
 
 extension IEC_61966.`2`.`1`.Blue {
 
     public var linear: IEC_61966.`2`.`1`.LinearLight {
-        typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
-        let linearValue: Double
-        if value <= TF.threshold {
-            linearValue = value / TF.linearSlope
-        } else {
-            linearValue = ISO_9899.Math.pow((value + TF.offset) / (1 + TF.offset), TF.gamma)
-        }
-        return IEC_61966.`2`.`1`.LinearLight(clamping: linearValue)
+        IEC_61966.`2`.`1`.LinearLight(clamping: IEC_61966.`2`.`1`.SRGB.TransferFunction.linear(value))
     }
 }
 

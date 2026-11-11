@@ -9,4 +9,5 @@ Use this package when you need sRGB colours as IEC 61966-2-1 defines them: gamma
 - `IEC_61966.Hue` holds degrees in 0..<360. The throwing initializer refuses anything else, including 360, and `IEC_61966.Hue.init(normalizing:)` wraps any finite angle into the range.
 - 8-bit values are divided by 255 on the way in, with out-of-range values clamped, and rounded to the nearest integer on the way out.
 - `IEC_61966.SRGB.init(hex:)` reads three or six hex digits, with or without a leading `#` and surrounding whitespace, and gives nil for anything else. Three digits scale each digit by 15. `IEC_61966.SRGB.hex` always writes `#` and six uppercase digits.
+- `SRGB.TransferFunction.linear(_:)` and `encoded(_:)` are the piecewise transfer function as plain functions of one component, in `Double` and in `Float`, clamping nothing; the component types below go through them.
 - Conversion to linear light uses the sRGB piecewise transfer function. Encoding back meets at the linear threshold, maps 0 and 1 to themselves, and never decreases.

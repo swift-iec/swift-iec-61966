@@ -56,3 +56,40 @@ extension `Transfer Function Boundary Tests` {
         }
     }
 }
+
+extension `Transfer Function Boundary Tests` {
+    @Suite
+    struct `The transfer function as plain functions` {
+        private typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
+
+        @Test
+        func `the plain functions are the ones the component types use`() throws {
+            try (0...255).forEach { level in
+                let encoded = Double(level) / 255
+                let red = try IEC_61966.`2`.`1`.Red(encoded)
+                let light = try IEC_61966.`2`.`1`.LinearLight(encoded)
+                #expect(TF.linear(encoded) == red.linear.value)
+                #expect(TF.encoded(encoded) == light.encoded)
+            }
+        }
+
+        @Test
+        func `linear and encoded undo each other on every 8-bit level, in both precisions`() {
+            (0...255).forEach { level in
+                let double = Double(level) / 255
+                #expect(abs(TF.encoded(TF.linear(double)) - double) < 1e-12)
+                let single = Float(level) / 255
+                #expect((TF.encoded(TF.linear(single)) * 255).rounded() == Float(level))
+                #expect(abs(Double(TF.linear(single)) - TF.linear(double)) < 1e-6)
+            }
+        }
+
+        @Test
+        func `nothing is clamped: a component outside 0…1 follows the same two pieces`() {
+            #expect(TF.linear(-0.5) == -0.5 / TF.linearSlope)
+            #expect(TF.encoded(-0.5) == -0.5 * TF.linearSlope)
+            #expect(TF.linear(2.0) > 1 && TF.encoded(2.0) > 1)
+            #expect(TF.linear(0.5) > 0.2140 && TF.linear(0.5) < 0.2141)
+        }
+    }
+}
