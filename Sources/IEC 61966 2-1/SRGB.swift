@@ -208,7 +208,7 @@ extension IEC_61966.`2`.`1`.SRGB {
             hexString.removeFirst()
         }
 
-        guard hexString.allSatisfy(\.isHexDigit), let value = UInt64(hexString, radix: 16) else {
+        guard hexString.allSatisfy({ $0.isHexDigit }), let value = UInt64(hexString, radix: 16) else {
             return nil
         }
 
