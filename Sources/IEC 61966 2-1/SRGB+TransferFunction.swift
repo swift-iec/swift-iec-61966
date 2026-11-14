@@ -70,16 +70,17 @@ extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
         return (1 + offset) * ISO_9899.Math.pow(linear, 1.0 / gamma) - offset
     }
 
-    /// `linear(_:)` in single precision, for buffers of `Float` components.
+    /// `linear(_:)` for buffers of `Float` components: the double-precision function of the component, rounded
+    /// to single. It is worked in double precision because a single-precision power is not the same number on
+    /// every platform's C library, and its exponent is not 2.4.
     public static func linear(_ encoded: Float) -> Float {
-        guard encoded > Float(threshold) else { return encoded / Float(linearSlope) }
-        return ISO_9899.Math.pow((encoded + Float(offset)) / (1 + Float(offset)), Float(gamma))
+        Float(linear(Double(encoded)))
     }
 
-    /// `encoded(_:)` in single precision, for buffers of `Float` components.
+    /// `encoded(_:)` for buffers of `Float` components: the double-precision function of the component, rounded
+    /// to single.
     public static func encoded(_ linear: Float) -> Float {
-        guard linear > Float(linearThreshold) else { return Float(linearSlope) * linear }
-        return (1 + Float(offset)) * ISO_9899.Math.pow(linear, 1 / Float(gamma)) - Float(offset)
+        Float(encoded(Double(linear)))
     }
 }
 

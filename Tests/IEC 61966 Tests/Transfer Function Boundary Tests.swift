@@ -85,6 +85,18 @@ extension `Transfer Function Boundary Tests` {
         }
 
         @Test
+        func `the single-precision functions are the double ones rounded, the same bits on every platform`() {
+            (0...1000).forEach { step in
+                let single = Float(step) / 1000
+                #expect(TF.linear(single) == Float(TF.linear(Double(single))))
+                #expect(TF.encoded(single) == Float(TF.encoded(Double(single))))
+            }
+            #expect(TF.linear(Float(0.08)).bitPattern == 0x3beb_bf14)
+            #expect(TF.linear(Float(0.7)).bitPattern == 0x3ee5_5ebc)
+            #expect(TF.linear(Float(0.9)).bitPattern == 0x3f49_93d9)
+        }
+
+        @Test
         func `nothing is clamped: a component outside 0…1 follows the same two pieces`() {
             #expect(TF.linear(-0.5) == -0.5 / TF.linearSlope)
             #expect(TF.encoded(-0.5) == -0.5 * TF.linearSlope)
