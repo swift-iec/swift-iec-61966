@@ -6,8 +6,8 @@ enum `Level Tests` {}
 extension `Level Tests` {
     @Suite
     struct `The 8-bit level of linear light is the plain path` {
-        private typealias Level = IEC_61966.`2`.`1`.SRGB.Level
-        private typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
+        private typealias Level = IEC.`61966`.`2`.`1`.SRGB.Level
+        private typealias TF = IEC.`61966`.`2`.`1`.SRGB.TransferFunction
 
         /// One power function per value: the encoded component times 255, rounded with halves up, clamped.
         private static func plain(_ linear: Double) -> UInt8 {
@@ -96,8 +96,8 @@ extension `Level Tests` {
 extension `Level Tests` {
     @Suite
     struct `The linear light of an 8-bit level` {
-        private typealias Level = IEC_61966.`2`.`1`.SRGB.Level
-        private typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
+        private typealias Level = IEC.`61966`.`2`.`1`.SRGB.Level
+        private typealias TF = IEC.`61966`.`2`.`1`.SRGB.TransferFunction
 
         @Test
         func `each level's linear light is the transfer function of the level over 255`() {
@@ -124,7 +124,7 @@ extension `Level Tests` {
 extension `Level Tests` {
     @Suite
     struct `The standard's matrices between CIE XYZ and linear sRGB` {
-        private typealias Matrix = IEC_61966.`2`.`1`.SRGB.Matrix
+        private typealias Matrix = IEC.`61966`.`2`.`1`.SRGB.Matrix
 
         @Test
         func `forward times reverse is the identity to the printed four decimals`() {

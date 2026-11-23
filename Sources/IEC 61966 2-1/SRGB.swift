@@ -1,7 +1,7 @@
 internal import ASCII
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct SRGB: Sendable, Hashable {
 
@@ -31,13 +31,13 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
     static func normalized(_ component: Double) -> Double {
         component.isNaN ? 0 : min(max(component, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Red: Sendable, Hashable {
 
@@ -52,14 +52,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Red {
+extension IEC.`61966`.`2`.`1`.Red {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Red.Error {
+extension IEC.`61966`.`2`.`1`.Red.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -67,14 +67,14 @@ extension IEC_61966.`2`.`1`.Red.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Red {
+extension IEC.`61966`.`2`.`1`.Red {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Green: Sendable, Hashable {
 
@@ -89,14 +89,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Green {
+extension IEC.`61966`.`2`.`1`.Green {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Green.Error {
+extension IEC.`61966`.`2`.`1`.Green.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -104,14 +104,14 @@ extension IEC_61966.`2`.`1`.Green.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Green {
+extension IEC.`61966`.`2`.`1`.Green {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Blue: Sendable, Hashable {
 
@@ -126,14 +126,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Blue {
+extension IEC.`61966`.`2`.`1`.Blue {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Blue.Error {
+extension IEC.`61966`.`2`.`1`.Blue.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -141,21 +141,21 @@ extension IEC_61966.`2`.`1`.Blue.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Blue {
+extension IEC.`61966`.`2`.`1`.Blue {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public init(gray: Double) {
         self.init(r: gray, g: gray, b: gray)
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public static let black = Self(r: 0, g: 0, b: 0)
 
@@ -174,7 +174,7 @@ extension IEC_61966.`2`.`1`.SRGB {
     public static let yellow = Self(r: 1, g: 1, b: 0)
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public init(r255 r: Int, g255 g: Int, b255 b: Int) {
         self.init(r: Double(r) / 255.0, g: Double(g) / 255.0, b: Double(b) / 255.0)
@@ -193,7 +193,7 @@ extension IEC_61966.`2`.`1`.SRGB {
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public init?(hex: String) {
         var hexString = hex

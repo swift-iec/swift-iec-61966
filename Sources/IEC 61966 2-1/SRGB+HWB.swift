@@ -1,11 +1,11 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public init(
-        hue: IEC_61966.`2`.`1`.Hue,
-        whiteness: IEC_61966.`2`.`1`.Whiteness,
-        blackness: IEC_61966.`2`.`1`.Blackness
+        hue: IEC.`61966`.`2`.`1`.Hue,
+        whiteness: IEC.`61966`.`2`.`1`.Whiteness,
+        blackness: IEC.`61966`.`2`.`1`.Blackness
     ) {
         var w = whiteness.value
         var b = blackness.value
@@ -18,8 +18,8 @@ extension IEC_61966.`2`.`1`.SRGB {
 
         let base = Self(
             hue: hue,
-            saturation: IEC_61966.`2`.`1`.Saturation(clamping: 1),
-            lightness: IEC_61966.`2`.`1`.Lightness(clamping: 0.5)
+            saturation: IEC.`61966`.`2`.`1`.Saturation(clamping: 1),
+            lightness: IEC.`61966`.`2`.`1`.Lightness(clamping: 0.5)
         )
 
         let scale = 1 - w - b
@@ -28,27 +28,27 @@ extension IEC_61966.`2`.`1`.SRGB {
 
     public init(hue: Double, whiteness: Double, blackness: Double) {
         self.init(
-            hue: IEC_61966.`2`.`1`.Hue(normalizing: hue),
-            whiteness: IEC_61966.`2`.`1`.Whiteness(clamping: whiteness),
-            blackness: IEC_61966.`2`.`1`.Blackness(clamping: blackness)
+            hue: IEC.`61966`.`2`.`1`.Hue(normalizing: hue),
+            whiteness: IEC.`61966`.`2`.`1`.Whiteness(clamping: whiteness),
+            blackness: IEC.`61966`.`2`.`1`.Blackness(clamping: blackness)
         )
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public var hwb:
         (
-            hue: IEC_61966.`2`.`1`.Hue,
-            whiteness: IEC_61966.`2`.`1`.Whiteness,
-            blackness: IEC_61966.`2`.`1`.Blackness
+            hue: IEC.`61966`.`2`.`1`.Hue,
+            whiteness: IEC.`61966`.`2`.`1`.Whiteness,
+            blackness: IEC.`61966`.`2`.`1`.Blackness
         )
     {
         let (h, w, b) = hwbValues
         return (
-            hue: IEC_61966.`2`.`1`.Hue(normalizing: h),
-            whiteness: IEC_61966.`2`.`1`.Whiteness(clamping: w),
-            blackness: IEC_61966.`2`.`1`.Blackness(clamping: b)
+            hue: IEC.`61966`.`2`.`1`.Hue(normalizing: h),
+            whiteness: IEC.`61966`.`2`.`1`.Whiteness(clamping: w),
+            blackness: IEC.`61966`.`2`.`1`.Blackness(clamping: b)
         )
     }
 

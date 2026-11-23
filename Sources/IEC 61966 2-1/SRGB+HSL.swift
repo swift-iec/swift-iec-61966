@@ -1,11 +1,11 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public init(
-        hue: IEC_61966.`2`.`1`.Hue,
-        saturation: IEC_61966.`2`.`1`.Saturation,
-        lightness: IEC_61966.`2`.`1`.Lightness
+        hue: IEC.`61966`.`2`.`1`.Hue,
+        saturation: IEC.`61966`.`2`.`1`.Saturation,
+        lightness: IEC.`61966`.`2`.`1`.Lightness
     ) {
         let h = hue.degrees
         let s = saturation.value
@@ -30,9 +30,9 @@ extension IEC_61966.`2`.`1`.SRGB {
 
     public init(h: Double, s: Double, l: Double) {
         self.init(
-            hue: IEC_61966.`2`.`1`.Hue(normalizing: h),
-            saturation: IEC_61966.`2`.`1`.Saturation(clamping: s),
-            lightness: IEC_61966.`2`.`1`.Lightness(clamping: l)
+            hue: IEC.`61966`.`2`.`1`.Hue(normalizing: h),
+            saturation: IEC.`61966`.`2`.`1`.Saturation(clamping: s),
+            lightness: IEC.`61966`.`2`.`1`.Lightness(clamping: l)
         )
     }
 
@@ -54,20 +54,20 @@ extension IEC_61966.`2`.`1`.SRGB {
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public var hsl:
         (
-            hue: IEC_61966.`2`.`1`.Hue,
-            saturation: IEC_61966.`2`.`1`.Saturation,
-            lightness: IEC_61966.`2`.`1`.Lightness
+            hue: IEC.`61966`.`2`.`1`.Hue,
+            saturation: IEC.`61966`.`2`.`1`.Saturation,
+            lightness: IEC.`61966`.`2`.`1`.Lightness
         )
     {
         let (h, s, l) = hslValues
         return (
-            hue: IEC_61966.`2`.`1`.Hue(normalizing: h),
-            saturation: IEC_61966.`2`.`1`.Saturation(clamping: s),
-            lightness: IEC_61966.`2`.`1`.Lightness(clamping: l)
+            hue: IEC.`61966`.`2`.`1`.Hue(normalizing: h),
+            saturation: IEC.`61966`.`2`.`1`.Saturation(clamping: s),
+            lightness: IEC.`61966`.`2`.`1`.Lightness(clamping: l)
         )
     }
 

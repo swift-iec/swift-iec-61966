@@ -1,6 +1,6 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1`.SRGB.Level {
+extension IEC.`61966`.`2`.`1`.SRGB.Level {
 
     /// One bucket of linear light: the values whose sign, exponent and top eight significand bits are the same.
     /// The values from 2⁻¹³ up to 1 make 13 binades of 256 buckets each. The level is that of the bucket's
@@ -18,7 +18,7 @@ extension IEC_61966.`2`.`1`.SRGB.Level {
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB.Level.Bucket {
+extension IEC.`61966`.`2`.`1`.SRGB.Level.Bucket {
 
     /// The first value with a bucket; every value below it has level 0.
     @usableFromInline

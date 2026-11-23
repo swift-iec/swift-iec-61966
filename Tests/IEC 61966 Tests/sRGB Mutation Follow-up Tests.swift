@@ -6,7 +6,7 @@ enum `sRGB Mutation Follow-up Tests` {}
 extension `sRGB Mutation Follow-up Tests` {
     @Suite
     struct `sRGB mutation follow-up` {
-        typealias sRGB = IEC_61966.`2`.`1`.SRGB
+        typealias sRGB = IEC.`61966`.`2`.`1`.SRGB
 
         @Test
         func `out-of-range 8-bit components are normalized`() {
@@ -67,7 +67,7 @@ extension `sRGB Mutation Follow-up Tests` {
 extension `sRGB Mutation Follow-up Tests` {
     @Suite
     struct `hue normalization` {
-        typealias Hue = IEC_61966.`2`.`1`.Hue
+        typealias Hue = IEC.`61966`.`2`.`1`.Hue
 
         @Test(arguments: [Double.nan, .infinity, -.infinity])
         func `non-finite degrees normalize to zero`(_ degrees: Double) {
@@ -85,7 +85,7 @@ extension `sRGB Mutation Follow-up Tests` {
 extension `sRGB Mutation Follow-up Tests` {
     @Suite
     struct `hex parsing` {
-        typealias sRGB = IEC_61966.`2`.`1`.SRGB
+        typealias sRGB = IEC.`61966`.`2`.`1`.SRGB
 
         @Test(arguments: ["+FF", "#+FF", "-FF", "+FFFFF", "#-FFFFF", "F F"])
         func `non-hex characters are rejected`(_ hex: String) {

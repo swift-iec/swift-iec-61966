@@ -1,7 +1,7 @@
 public import IEC_61966_Shared
 import ISO_9899
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct LinearLight: Sendable, Hashable {
 
@@ -16,14 +16,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.LinearLight {
+extension IEC.`61966`.`2`.`1`.LinearLight {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.LinearLight.Error {
+extension IEC.`61966`.`2`.`1`.LinearLight.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -31,19 +31,19 @@ extension IEC_61966.`2`.`1`.LinearLight.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.LinearLight {
+extension IEC.`61966`.`2`.`1`.LinearLight {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     public enum TransferFunction {}
 }
 
-extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
+extension IEC.`61966`.`2`.`1`.SRGB.TransferFunction {
     public static let threshold: Double = 0.04045
 
     public static let linearThreshold: Double = 0.0031308
@@ -55,7 +55,7 @@ extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
     public static let offset: Double = 0.055
 }
 
-extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
+extension IEC.`61966`.`2`.`1`.SRGB.TransferFunction {
     /// The linear light of an encoded component: the component over 12.92 up to the threshold, and a
     /// power of 2.4 above it. Nothing is clamped, so a component outside 0…1 follows the same two pieces.
     public static func linear(_ encoded: Double) -> Double {
@@ -84,33 +84,33 @@ extension IEC_61966.`2`.`1`.SRGB.TransferFunction {
     }
 }
 
-extension IEC_61966.`2`.`1`.LinearLight {
+extension IEC.`61966`.`2`.`1`.LinearLight {
 
-    public var encoded: Double { IEC_61966.`2`.`1`.SRGB.TransferFunction.encoded(value) }
+    public var encoded: Double { IEC.`61966`.`2`.`1`.SRGB.TransferFunction.encoded(value) }
 }
 
-extension IEC_61966.`2`.`1`.Red {
+extension IEC.`61966`.`2`.`1`.Red {
 
-    public var linear: IEC_61966.`2`.`1`.LinearLight {
-        IEC_61966.`2`.`1`.LinearLight(clamping: IEC_61966.`2`.`1`.SRGB.TransferFunction.linear(value))
+    public var linear: IEC.`61966`.`2`.`1`.LinearLight {
+        IEC.`61966`.`2`.`1`.LinearLight(clamping: IEC.`61966`.`2`.`1`.SRGB.TransferFunction.linear(value))
     }
 }
 
-extension IEC_61966.`2`.`1`.Green {
+extension IEC.`61966`.`2`.`1`.Green {
 
-    public var linear: IEC_61966.`2`.`1`.LinearLight {
-        IEC_61966.`2`.`1`.LinearLight(clamping: IEC_61966.`2`.`1`.SRGB.TransferFunction.linear(value))
+    public var linear: IEC.`61966`.`2`.`1`.LinearLight {
+        IEC.`61966`.`2`.`1`.LinearLight(clamping: IEC.`61966`.`2`.`1`.SRGB.TransferFunction.linear(value))
     }
 }
 
-extension IEC_61966.`2`.`1`.Blue {
+extension IEC.`61966`.`2`.`1`.Blue {
 
-    public var linear: IEC_61966.`2`.`1`.LinearLight {
-        IEC_61966.`2`.`1`.LinearLight(clamping: IEC_61966.`2`.`1`.SRGB.TransferFunction.linear(value))
+    public var linear: IEC.`61966`.`2`.`1`.LinearLight {
+        IEC.`61966`.`2`.`1`.LinearLight(clamping: IEC.`61966`.`2`.`1`.SRGB.TransferFunction.linear(value))
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct LinearSRGB: Sendable, Hashable {
 
@@ -128,16 +128,16 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.LinearSRGB {
+extension IEC.`61966`.`2`.`1`.LinearSRGB {
 
     public init(r: Double, g: Double, b: Double) {
-        self.r = IEC_61966.`2`.`1`.LinearLight(clamping: r)
-        self.g = IEC_61966.`2`.`1`.LinearLight(clamping: g)
-        self.b = IEC_61966.`2`.`1`.LinearLight(clamping: b)
+        self.r = IEC.`61966`.`2`.`1`.LinearLight(clamping: r)
+        self.g = IEC.`61966`.`2`.`1`.LinearLight(clamping: g)
+        self.b = IEC.`61966`.`2`.`1`.LinearLight(clamping: b)
     }
 
-    public var encoded: IEC_61966.`2`.`1`.SRGB {
-        IEC_61966.`2`.`1`.SRGB(
+    public var encoded: IEC.`61966`.`2`.`1`.SRGB {
+        IEC.`61966`.`2`.`1`.SRGB(
             r: r.encoded,
             g: g.encoded,
             b: b.encoded
@@ -145,17 +145,17 @@ extension IEC_61966.`2`.`1`.LinearSRGB {
     }
 }
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
-    public var linear: IEC_61966.`2`.`1`.LinearSRGB {
-        IEC_61966.`2`.`1`.LinearSRGB(
-            r: IEC_61966.`2`.`1`.Red(clamping: r).linear,
-            g: IEC_61966.`2`.`1`.Green(clamping: g).linear,
-            b: IEC_61966.`2`.`1`.Blue(clamping: b).linear
+    public var linear: IEC.`61966`.`2`.`1`.LinearSRGB {
+        IEC.`61966`.`2`.`1`.LinearSRGB(
+            r: IEC.`61966`.`2`.`1`.Red(clamping: r).linear,
+            g: IEC.`61966`.`2`.`1`.Green(clamping: g).linear,
+            b: IEC.`61966`.`2`.`1`.Blue(clamping: b).linear
         )
     }
 
-    public init(_ linear: IEC_61966.`2`.`1`.LinearSRGB) {
+    public init(_ linear: IEC.`61966`.`2`.`1`.LinearSRGB) {
         self.r = linear.r.encoded
         self.g = linear.g.encoded
         self.b = linear.b.encoded

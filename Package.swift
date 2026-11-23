@@ -17,6 +17,7 @@ let package = Package(
         .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"]),
     ],
     dependencies: [
+        .package(url: "https://github.com/swift-iec/swift-iec.git", branch: "main"),
         .package(url: "https://github.com/swift-iso/swift-iso-9899.git", branch: "main"),
         .package(
             url: "https://github.com/swift-atoms/swift-ascii.git",
@@ -25,7 +26,10 @@ let package = Package(
     ],
     targets: [
 
-        .target(name: "IEC 61966 Shared"),
+        .target(
+            name: "IEC 61966 Shared",
+            dependencies: [.product(name: "IEC", package: "swift-iec")]
+        ),
 
         .target(
             name: "IEC 61966 2-1",

@@ -1,6 +1,6 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1`.SRGB {
+extension IEC.`61966`.`2`.`1`.SRGB {
 
     /// The 8-bit encoding of a component, taken from and back to linear light: the encoded component
     /// `TransferFunction.encoded(_:)` makes, times 255, rounded. Both directions are tables built once, so no
@@ -8,7 +8,7 @@ extension IEC_61966.`2`.`1`.SRGB {
     public enum Level {}
 }
 
-extension IEC_61966.`2`.`1`.SRGB.Level {
+extension IEC.`61966`.`2`.`1`.SRGB.Level {
 
     /// The 8-bit level of a linear light: `TransferFunction.encoded(linear) * 255`, rounded to the nearest
     /// integer with halves up and clamped to 0…255, for every `Double`, at the exact thresholds too.

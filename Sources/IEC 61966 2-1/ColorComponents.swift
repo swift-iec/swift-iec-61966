@@ -1,6 +1,6 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Hue: Sendable, Hashable {
 
@@ -27,14 +27,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Hue {
+extension IEC.`61966`.`2`.`1`.Hue {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Hue.Error {
+extension IEC.`61966`.`2`.`1`.Hue.Error {
     public static let validRange: Range<Double> = 0..<360
 
     public var description: String {
@@ -42,13 +42,13 @@ extension IEC_61966.`2`.`1`.Hue.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Hue: CustomStringConvertible {
+extension IEC.`61966`.`2`.`1`.Hue: CustomStringConvertible {
     public var description: String {
         "\(degrees)°"
     }
 }
 
-extension IEC_61966.`2`.`1`.Hue {
+extension IEC.`61966`.`2`.`1`.Hue {
 
     public init(normalizing degrees: Double) {
         guard degrees.isFinite else {
@@ -60,7 +60,7 @@ extension IEC_61966.`2`.`1`.Hue {
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Saturation: Sendable, Hashable {
 
@@ -79,14 +79,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Saturation {
+extension IEC.`61966`.`2`.`1`.Saturation {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Saturation.Error {
+extension IEC.`61966`.`2`.`1`.Saturation.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -94,20 +94,20 @@ extension IEC_61966.`2`.`1`.Saturation.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Saturation: CustomStringConvertible {
+extension IEC.`61966`.`2`.`1`.Saturation: CustomStringConvertible {
     public var description: String {
         "\(value * 100)%"
     }
 }
 
-extension IEC_61966.`2`.`1`.Saturation {
+extension IEC.`61966`.`2`.`1`.Saturation {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Lightness: Sendable, Hashable {
 
@@ -126,14 +126,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Lightness {
+extension IEC.`61966`.`2`.`1`.Lightness {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Lightness.Error {
+extension IEC.`61966`.`2`.`1`.Lightness.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -141,20 +141,20 @@ extension IEC_61966.`2`.`1`.Lightness.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Lightness: CustomStringConvertible {
+extension IEC.`61966`.`2`.`1`.Lightness: CustomStringConvertible {
     public var description: String {
         "\(value * 100)%"
     }
 }
 
-extension IEC_61966.`2`.`1`.Lightness {
+extension IEC.`61966`.`2`.`1`.Lightness {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Whiteness: Sendable, Hashable {
 
@@ -173,14 +173,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Whiteness {
+extension IEC.`61966`.`2`.`1`.Whiteness {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Whiteness.Error {
+extension IEC.`61966`.`2`.`1`.Whiteness.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -188,20 +188,20 @@ extension IEC_61966.`2`.`1`.Whiteness.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Whiteness: CustomStringConvertible {
+extension IEC.`61966`.`2`.`1`.Whiteness: CustomStringConvertible {
     public var description: String {
         "\(value * 100)%"
     }
 }
 
-extension IEC_61966.`2`.`1`.Whiteness {
+extension IEC.`61966`.`2`.`1`.Whiteness {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct Blackness: Sendable, Hashable {
 
@@ -220,14 +220,14 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.Blackness {
+extension IEC.`61966`.`2`.`1`.Blackness {
 
     public struct Error: Swift::Error, Sendable, CustomStringConvertible {
         public let value: Double
     }
 }
 
-extension IEC_61966.`2`.`1`.Blackness.Error {
+extension IEC.`61966`.`2`.`1`.Blackness.Error {
     public static let validRange: ClosedRange<Double> = 0...1
 
     public var description: String {
@@ -235,25 +235,25 @@ extension IEC_61966.`2`.`1`.Blackness.Error {
     }
 }
 
-extension IEC_61966.`2`.`1`.Blackness: CustomStringConvertible {
+extension IEC.`61966`.`2`.`1`.Blackness: CustomStringConvertible {
     public var description: String {
         "\(value * 100)%"
     }
 }
 
-extension IEC_61966.`2`.`1`.Blackness {
+extension IEC.`61966`.`2`.`1`.Blackness {
 
     public init(clamping value: Double) {
         self.value = value.isNaN ? 0 : min(max(value, 0), 1)
     }
 }
 
-public typealias Hue = IEC_61966.`2`.`1`.Hue
+public typealias Hue = IEC.`61966`.`2`.`1`.Hue
 
-public typealias Saturation = IEC_61966.`2`.`1`.Saturation
+public typealias Saturation = IEC.`61966`.`2`.`1`.Saturation
 
-public typealias Lightness = IEC_61966.`2`.`1`.Lightness
+public typealias Lightness = IEC.`61966`.`2`.`1`.Lightness
 
-public typealias Whiteness = IEC_61966.`2`.`1`.Whiteness
+public typealias Whiteness = IEC.`61966`.`2`.`1`.Whiteness
 
-public typealias Blackness = IEC_61966.`2`.`1`.Blackness
+public typealias Blackness = IEC.`61966`.`2`.`1`.Blackness

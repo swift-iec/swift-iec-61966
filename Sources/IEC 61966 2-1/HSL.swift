@@ -1,6 +1,6 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct HSL: Sendable, Hashable {
 
@@ -22,7 +22,7 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.HSL {
+extension IEC.`61966`.`2`.`1`.HSL {
 
     public init(h: Double, s: Double, l: Double) {
         self.hue = Hue(normalizing: h)
@@ -31,17 +31,17 @@ extension IEC_61966.`2`.`1`.HSL {
     }
 }
 
-extension IEC_61966.`2`.`1`.HSL {
+extension IEC.`61966`.`2`.`1`.HSL {
 
-    public init(_ srgb: IEC_61966.`2`.`1`.SRGB) {
+    public init(_ srgb: IEC.`61966`.`2`.`1`.SRGB) {
         let hsl = srgb.hsl
         self.hue = hsl.hue
         self.saturation = hsl.saturation
         self.lightness = hsl.lightness
     }
 
-    public var srgb: IEC_61966.`2`.`1`.SRGB {
-        IEC_61966.`2`.`1`.SRGB(
+    public var srgb: IEC.`61966`.`2`.`1`.SRGB {
+        IEC.`61966`.`2`.`1`.SRGB(
             hue: hue,
             saturation: saturation,
             lightness: lightness
@@ -49,7 +49,7 @@ extension IEC_61966.`2`.`1`.HSL {
     }
 }
 
-extension IEC_61966.`2`.`1`.HSL {
+extension IEC.`61966`.`2`.`1`.HSL {
 
     public var h: Double { hue.degrees }
 

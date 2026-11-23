@@ -6,8 +6,8 @@ enum `Transfer Function Boundary Tests` {}
 extension `Transfer Function Boundary Tests` {
     @Suite
     struct `sRGB transfer function boundaries` {
-        private typealias Linear = IEC_61966.`2`.`1`.LinearLight
-        private typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
+        private typealias Linear = IEC.`61966`.`2`.`1`.LinearLight
+        private typealias TF = IEC.`61966`.`2`.`1`.SRGB.TransferFunction
 
         @Test
         func `the endpoints encode to themselves`() throws {
@@ -50,7 +50,7 @@ extension `Transfer Function Boundary Tests` {
 
         @Test
         func `a NaN channel reads as zero instead of trapping`() {
-            let color = IEC_61966.SRGB(r: .nan, g: 0.5, b: 1)
+            let color = IEC.`61966`.SRGB(r: .nan, g: 0.5, b: 1)
             #expect(color.r255 == 0)
             #expect(color.b255 == 255)
         }
@@ -60,14 +60,14 @@ extension `Transfer Function Boundary Tests` {
 extension `Transfer Function Boundary Tests` {
     @Suite
     struct `The transfer function as plain functions` {
-        private typealias TF = IEC_61966.`2`.`1`.SRGB.TransferFunction
+        private typealias TF = IEC.`61966`.`2`.`1`.SRGB.TransferFunction
 
         @Test
         func `the plain functions are the ones the component types use`() throws {
             try (0...255).forEach { level in
                 let encoded = Double(level) / 255
-                let red = try IEC_61966.`2`.`1`.Red(encoded)
-                let light = try IEC_61966.`2`.`1`.LinearLight(encoded)
+                let red = try IEC.`61966`.`2`.`1`.Red(encoded)
+                let light = try IEC.`61966`.`2`.`1`.LinearLight(encoded)
                 #expect(TF.linear(encoded) == red.linear.value)
                 #expect(TF.encoded(encoded) == light.encoded)
             }

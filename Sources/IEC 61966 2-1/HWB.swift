@@ -1,6 +1,6 @@
 public import IEC_61966_Shared
 
-extension IEC_61966.`2`.`1` {
+extension IEC.`61966`.`2`.`1` {
 
     public struct HWB: Sendable, Hashable {
 
@@ -22,7 +22,7 @@ extension IEC_61966.`2`.`1` {
     }
 }
 
-extension IEC_61966.`2`.`1`.HWB {
+extension IEC.`61966`.`2`.`1`.HWB {
 
     public init(h: Double, w: Double, b: Double) {
         self.hue = Hue(normalizing: h)
@@ -31,17 +31,17 @@ extension IEC_61966.`2`.`1`.HWB {
     }
 }
 
-extension IEC_61966.`2`.`1`.HWB {
+extension IEC.`61966`.`2`.`1`.HWB {
 
-    public init(_ srgb: IEC_61966.`2`.`1`.SRGB) {
+    public init(_ srgb: IEC.`61966`.`2`.`1`.SRGB) {
         let hwb = srgb.hwb
         self.hue = hwb.hue
         self.whiteness = hwb.whiteness
         self.blackness = hwb.blackness
     }
 
-    public var srgb: IEC_61966.`2`.`1`.SRGB {
-        IEC_61966.`2`.`1`.SRGB(
+    public var srgb: IEC.`61966`.`2`.`1`.SRGB {
+        IEC.`61966`.`2`.`1`.SRGB(
             hue: hue,
             whiteness: whiteness,
             blackness: blackness
@@ -49,18 +49,18 @@ extension IEC_61966.`2`.`1`.HWB {
     }
 }
 
-extension IEC_61966.`2`.`1`.HWB {
+extension IEC.`61966`.`2`.`1`.HWB {
 
-    public init(_ hsl: IEC_61966.`2`.`1`.HSL) {
+    public init(_ hsl: IEC.`61966`.`2`.`1`.HSL) {
         self.init(hsl.srgb)
     }
 
-    public var hsl: IEC_61966.`2`.`1`.HSL {
-        IEC_61966.`2`.`1`.HSL(srgb)
+    public var hsl: IEC.`61966`.`2`.`1`.HSL {
+        IEC.`61966`.`2`.`1`.HSL(srgb)
     }
 }
 
-extension IEC_61966.`2`.`1`.HWB {
+extension IEC.`61966`.`2`.`1`.HWB {
 
     public var h: Double { hue.degrees }
 
