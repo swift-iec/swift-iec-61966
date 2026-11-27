@@ -15,6 +15,10 @@ let package = Package(
         .library(name: "IEC 61966", targets: ["IEC 61966"]),
         .library(name: "IEC 61966 Shared", targets: ["IEC 61966 Shared"]),
         .library(name: "IEC 61966 2-1", targets: ["IEC 61966 2-1"]),
+        .library(name: "IEC 61966 Pixel", targets: ["IEC 61966 Pixel"]),
+    ],
+    traits: [
+        .trait(name: "Pixel", description: "IEC 61966 Pixel: swift-pixel's encoded pixel from and to linear light through sRGB levels")
     ],
     dependencies: [
         .package(url: "https://github.com/swift-iec/swift-iec.git", branch: "main"),
@@ -23,6 +27,7 @@ let package = Package(
             url: "https://github.com/swift-atoms/swift-ascii.git",
             branch: "main"
         ),
+        .package(url: "https://github.com/swift-molecules/swift-pixel.git", branch: "main"),
     ],
     targets: [
 
@@ -48,10 +53,27 @@ let package = Package(
             ]
         ),
 
+        .target(
+            name: "IEC 61966 Pixel",
+            dependencies: [
+                .target(name: "IEC 61966"),
+                .product(name: "Pixel", package: "swift-pixel"),
+            ]
+        ),
+
         .testTarget(
             name: "IEC 61966 Tests",
             dependencies: [
                 .target(name: "IEC 61966")
+            ]
+        ),
+
+        .testTarget(
+            name: "IEC 61966 Pixel Tests",
+            dependencies: [
+                .target(name: "IEC 61966"),
+                .target(name: "IEC 61966 Pixel"),
+                .product(name: "Pixel", package: "swift-pixel"),
             ]
         ),
     ],
